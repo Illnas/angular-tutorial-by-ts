@@ -30,5 +30,17 @@
             <td>{{pokemon.name}}</td>
             <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
         </tr>
+
+        <tr *ngFor="let pokemon of pokemons; let i = index">
+            <td [ngClass]="{'cool-bool' : pokemon.isCool}">{{pokemon.id}}</td>
+            <td [style.backgroundColor]="(pokemon.isStylish ? 'purple' : '')">{{pokemon.name}}</td>
+            <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
+        </tr>
+
+        <tr *ngFor="let pokemon of pokemons; let i = index">
+            <td [ngClass]="{'cool-bool' : pokemon.isCool}">{{pokemon.id}}</td>
+            <td [ngStyle]="{'backgroundColor' : (pokemon.isCool ? 'red' : 'yellow')}">{{pokemon.name}}</td>
+            <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
+        </tr>
     </tbody>
 </table>
