@@ -44,3 +44,29 @@
         </tr>
     </tbody>
 </table>
+
+
+<br>
+<input type="text" [value]="pokemonNameSecond" (input)="handleChange($event)">
+<p>
+    {{pokemonNameSecond}}
+</p>
+
+<div *ngIf="!pokemonNameSecond">
+    No search results found...
+</div>
+
+
+
+<!-- Common template for ngIf -->
+<!-- <ng-container *ngIf="pokemons.length; then pokemons; else noPokemon">
+</ng-container>
+
+<ng-template #pokemonList>
+    <h1>All pokemon available</h1>
+    ....
+</ng-template>
+
+<ng-template #noPokemon>
+    <h1>No pokemon available</h1>
+</ng-template> -->

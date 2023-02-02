@@ -24,6 +24,8 @@ export class AppComponent {
 
   favoriteAnimal: string = "turtle";
   pokemonName: string = "";
+  pokemonNameSecond: string = "";
+
 
   pokemons: Pokemon[] = [{
     id: 1,
@@ -54,5 +56,9 @@ export class AppComponent {
 
   handleClick(value: any) {
     console.log(value);
+  }
+
+  handleChange(event: any) {
+    this.pokemonNameSecond = event.target.value
   }
 }
