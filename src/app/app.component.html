@@ -13,62 +13,6 @@
 
 
 
-{{ title }}
-
-{{numberOne}}
-
-{{togglePokemon ? "isPokemon" : "notPokemon"}}
-
-<h1 [innerHtml]="titleSecond"></h1>
-<img [src]="imgSrc" alt="">
-<input [(ngModel)]="favoriteAnimal" />
-<p>{{favoriteAnimal}}</p>
-
-<input type="text" #pokemonName />
-<button (click)="handleClick(pokemonName.value)">Click Template Ref Value</button>
-<table>
-    <thead>
-        <th>Index</th>
-        <th>Name</th>
-        <th>Type</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pokemon of pokemons; let i = index">
-            <td [class.cool-bool]="pokemon.isCool">{{pokemon.id}}</td>
-            <td>{{pokemon.name}}</td>
-            <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
-        </tr>
-
-        <tr *ngFor="let pokemon of pokemons; let i = index">
-            <td [ngClass]="{'cool-bool' : pokemon.isCool}">{{pokemon.id}}</td>
-            <td>{{pokemon.name}}</td>
-            <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
-        </tr>
-
-        <tr *ngFor="let pokemon of pokemons; let i = index">
-            <td [ngClass]="{'cool-bool' : pokemon.isCool}">{{pokemon.id}}</td>
-            <td [style.backgroundColor]="(pokemon.isStylish ? 'purple' : '')">{{pokemon.name}}</td>
-            <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
-        </tr>
-
-        <tr *ngFor="let pokemon of pokemons; let i = index">
-            <td [ngClass]="{'cool-bool' : pokemon.isCool}">{{pokemon.id}}</td>
-            <td [ngStyle]="{'backgroundColor' : (pokemon.isCool ? 'red' : 'yellow')}">{{pokemon.name}}</td>
-            <td [class.cool-bool]="pokemon.isCool">{{pokemon.type}}</td>
-        </tr>
-    </tbody>
-</table>
-
-
-<br>
-<input type="text" [value]="pokemonNameSecond" (input)="handleChange($event)">
-<p>
-    {{pokemonNameSecond}}
-</p>
-
-<div *ngIf="!pokemonNameSecond">
-    No search results found...
-</div>
 
 
 
