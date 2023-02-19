@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
 import { FormsModule } from '@angular/forms'; 
+import { PokemonService } from 'src/app/services/pokemon.service';
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
@@ -8,28 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PokemonListComponent implements OnInit {
 
-  pokemons: Pokemon[] = [{
-    id: 1,
-    name: 'pikachu',
-    type: 'electric',
-    isCool: false,
-    isStylish: true,
-  },
-  {
-    id: 2,
-    name: 'squirtle',
-    type: 'water',
-    isCool: true,
-    isStylish: false,
-  },
-  {
-    id: 3,
-    name: 'charmander',
-    type: 'fire',
-    isCool: false,
-    isStylish: true,
-  }]
-
+ 
   title: string;
   numberOne: number = 1;
   togglePokemon: boolean = false;
@@ -42,8 +22,10 @@ export class PokemonListComponent implements OnInit {
   pokemonNameSecond: string = "";
 
 
+  pokemons!: Pokemon[];
 
-  constructor() {
+
+  constructor(private pokemonService: PokemonService) {
     this.title = "Nada"
   }
 
@@ -56,7 +38,10 @@ export class PokemonListComponent implements OnInit {
   } 
 
   ngOnInit(): void {
-    console.log("ngOnitFired")
+    this.pokemonService.getPokemon().subscribe((data: Pokemon[]) => {
+      console.log(data)
+      this.pokemons = data;
+    })
   }
 
   handleRemove(event: Pokemon) {
