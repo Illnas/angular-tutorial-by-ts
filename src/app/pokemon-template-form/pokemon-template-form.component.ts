@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../models/pokemon';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-template-form',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokemon-template-form.component.css']
 })
 export class PokemonTemplateFormComponent {
+  pokemon!: Pokemon;
+  constructor(private pokemonService:PokemonService) {}
+
+  toggleIsCool(object: any) {
+    console.log(object)
+  }
+
+  ngOnInit() {
+    this.pokemonService.getPokemons(1).subscribe((data: Pokemon) => {
+      this.pokemon = data;
+    })
+  }
 
 }
