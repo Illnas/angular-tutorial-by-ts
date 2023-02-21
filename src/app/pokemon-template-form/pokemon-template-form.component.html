@@ -1,16 +1,49 @@
 <form #form="ngForm">
-    Pokemon Name: <input type="text" [(ngModel)]="pokemon.name" name="name">
+  Pokemon Name: <input type="text" [(ngModel)]="pokemon.name" name="name" />
 
-    <label for="">Is it Cool?</label>
-    <input type="radio" name="isCool" id="" [value]="true" [ngModel]="pokemon.isCool">
+  <label for="">Is it Cool?</label>
+  <input
+    type="radio"
+    name="isCool"
+    id=""
+    [value]="true"
+    #pokemonName="ngModel"
+    [ngModel]="pokemon.isCool"
+  />
 
-    <label for="">Is it Cool?</label>
-    <input type="radio" name="isCool" id="" [value]="false" [ngModel]="pokemon.isCool" (ngModelChange)="toggleIsCool($event)">
+  <label for="">Is it Cool?</label>
+  <input
+    type="radio"
+    name="isCool"
+    id=""
+    [value]="false"
+    [ngModel]="pokemon.isCool"
+    (ngModelChange)="toggleIsCool($event)"
+  />
 
-    <label for="">This is a checkbox</label>
-    <input type="checkbox" name="acceptTerms" [(ngModel)]="pokemon.acceptTerms" id="">
+  <label for="">This is a checkbox</label>
+  <input
+    type="checkbox"
+    name="acceptTerms"
+    [(ngModel)]="pokemon.acceptTerms"
+    id=""
+  />
 
+  <label>
+    Pokemon Type:
+    <select name="pokemonType" [ngModel]="pokemon.name">
+      <option
+        *ngFor="let type of pokemonType"
+        [value]="type.key"
+        [selected]="type.value === pokemon.type"
+      >
+        {{ type.value }}
+      </option>
+    </select>
+  </label>
 </form>
 
-Model: {{pokemon | json}}
-Form {{form.value | json}}
+<div>
+  Model: {{ pokemon | json }} Form {{ form.value | json }} ERROR:
+  <div *ngIf="!pokemonName.pristine">Not Pristine anymore</div>
+</div>

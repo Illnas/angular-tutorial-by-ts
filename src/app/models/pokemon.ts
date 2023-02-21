@@ -8,3 +8,9 @@ export interface Pokemon {
     isStylish: boolean,
     acceptTerms: boolean
   }
+
+
+  export interface PokemonType {
+    key: number,
+    value: string
+  }

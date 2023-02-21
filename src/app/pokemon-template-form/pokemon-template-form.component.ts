@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../models/pokemon';
+import { Pokemon, PokemonType } from '../models/pokemon';
 import { PokemonService } from '../services/pokemon.service';
 
 @Component({
@@ -9,6 +9,16 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class PokemonTemplateFormComponent {
   pokemon!: Pokemon;
+  pokemonType: PokemonType[] =[
+    {
+      key: 0,
+      value: 'Fire'
+    },
+    {
+      key: 1,
+      value: 'Water'
+    }
+]
   constructor(private pokemonService:PokemonService) {}
 
   toggleIsCool(object: any) {
