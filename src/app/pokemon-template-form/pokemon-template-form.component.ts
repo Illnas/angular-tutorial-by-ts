@@ -25,6 +25,10 @@ export class PokemonTemplateFormComponent {
     console.log(object)
   }
 
+  handleSubmit(object: any) {
+    console.log(object)
+  }
+
   ngOnInit() {
     this.pokemonService.getPokemons(1).subscribe((data: Pokemon) => {
       this.pokemon = data;
