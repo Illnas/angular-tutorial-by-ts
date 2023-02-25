@@ -18,17 +18,18 @@
 </button>
 <table>
   <thead>
-    <th>Index</th>
+    <th #pokemonTh>Index</th>
     <th>Name</th>
     <th>Type</th>
   </thead>
   <tbody>
     <tr>
       <app-pokemon-detail
+        #pokemonRef
         *ngFor="let pokemon of pokemons"
         [detail]="pokemon"
         (remove)="handleRemove($event)"
-      ></app-pokemon-detail>
+      ><h1>---------------------</h1></app-pokemon-detail>
     </tr>
   </tbody>
 </table>
@@ -38,5 +39,8 @@
 <p>
   {{ pokemonNameSecond }}
 </p>
+<div highlighttext>TEXT</div>
+  <h2 *customif="true">This is true</h2>
+  <h2 *customif="false">This is not true</h2>
 
 <div *ngIf="!pokemonNameSecond">No search results found...</div>

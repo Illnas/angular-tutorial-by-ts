@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
 import { FormsModule } from '@angular/forms'; 
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -7,7 +7,10 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.css']
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit, AfterViewInit {
+
+  @ViewChildren('pokemonRef') pokemonRef!: ElementRef
+  @ViewChild('pokemonTh') pokemonTh!: ElementRef
 
  
   title: string;
@@ -25,12 +28,21 @@ export class PokemonListComponent implements OnInit {
   pokemons!: Pokemon[];
 
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService, private renderer: Renderer2) {
     this.title = "Nada"
   }
 
+  ngAfterViewInit(): void {
+      console.log(this.pokemonRef)
+      this.pokemonTh.nativeElement.innerText = "Pokemon Ref used with"
+      const div = this.renderer.createElement('div')
+      const text = this.renderer.createText('Random Text')
+      this.renderer.appendChild(div, text)
+      this.renderer.appendChild(this.pokemonTh.nativeElement, div)
+  }
+
   handleClick(value: any) {
-    console.log(value);
+    
   }
 
   handleChange(event: any) {
